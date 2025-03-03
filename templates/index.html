@@ -8,66 +8,45 @@
 </head>
 
 <body>
-    <header>
-        <div class="top">
-            <a href="#" class="profile">profile 👤</a>
-            <h1>BookSwap</h1>
-            <a href="#" class="add_book">add a book</a>
+
+    <div class="container">
+        <header>
+          <h1>📚 BookSwap Homepage</h1>
+        </header>
+
+        <header class="navbar">
+            <button class="profile-btn">Profile 👤</button>
+
+            <a href="{{ url_for('home') }}" class="home-btn">🏠</a>
+            <form action="{{ url_for('search_books') }}" method="GET" class="search-form">
+                <input type="text" id="search" name="query" placeholder="Search books...">
+                <button type="submit" class="search-btn">🔍</button>
+            </form>
+        </header>
+
+        <div class="filters">
+            <a href="{{ url_for('filter_sort') }}"><button>Sort By/Filter</button></a>
+            <!-- <button id="filter">Filter</button> -->
         </div>
-        <div class="search-container">
-            <a href="#" class="icon">🔍</a>
-            <input type="text" placeholder="Search for books..." />
-            <a href="#" class="icon">filter icon</a>
+
+        <div id="book-list">
+            {% if books %}
+                {% for book in books %}
+                <div class="book">
+                    <h3><a href="{{ url_for('book_details', book_id=book._id) }}">{{ book.title }}</a></h3>
+                    <p><strong>Author:</strong> {{ book.author }}</p>
+                    <p><strong>Price:</strong> ${{ book.price }}</p>
+                    <p><strong>Edition:</strong> {{ book.edition }}</p>
+                    <p><strong>Year:</strong> {{ book.year }}</p>
+                    <p><strong>Condition:</strong> {{ book.condition }}</p>
+                    <p><strong>Format:</strong> {{ book.format }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No books match your filter criteria.</p>
+            {% endif %}
         </div>
-    </header>
-    <main>
-        <div class="book-container">
-            <div class="book-card">
-                <div class="book-image"></div>
-                <div class="book-info">
-                    <p class="book-title">{Book Name}</p>
-                    <p class="book-author">{Name of the Author}</p>
-                </div>
-                <div class="book-footer">
-                    <span class="price">{Price}</span>
-                    <span class="details">See details</span>
-                </div>
-            </div>
-            <div class="book-card">
-                <div class="book-image"></div>
-                <div class="book-info">
-                    <p class="book-title">{Book Name}</p>
-                    <p class="book-author">{Name of the Author}</p>
-                </div>
-                <div class="book-footer">
-                    <span class="price">{Price}</span>
-                    <span class="details">See details</span>
-                </div>
-            </div>
-            <div class="book-card">
-                <div class="book-image"></div>
-                <div class="book-info">
-                    <p class="book-title">{Book Name}</p>
-                    <p class="book-author">{Name of the Author}</p>
-                </div>
-                <div class="book-footer">
-                    <span class="price">{Price}</span>
-                    <span class="details">See details</span>
-                </div>
-            </div>
-            <div class="book-card">
-                <div class="book-image"></div>
-                <div class="book-info">
-                    <p class="book-title">{Book Name}</p>
-                    <p class="book-author">{Name of the Author}</p>
-                </div>
-                <div class="book-footer">
-                    <span class="price">{Price}</span>
-                    <span class="details">See details</span>
-                </div>
-            </div>
-        </div>
-    </main>
+    <a href="{{ url_for('add_book') }}" class="add-book-btn">➕</a>
 </body>
 
 </html>
