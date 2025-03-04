@@ -1,0 +1,90 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+    max-width: 900px;
+}
+
+.add-book-container {
+    width: 50%;
+    max-width: 400px;
+    background-color: white;
+    padding: 20px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0px black;
+    border-radius: 5px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 16px;
+    text-align: left;
+    font-weight: bold;
+    display: block;
+}
+
+input, select {
+    width: 94%;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 3px;
+    font-size: 16px;
+    background-color: white;
+    text-align: left;
+}
+
+select {
+    width: 100%;
+}
+
+button {
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid black;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    box-shadow: 3px 3px 0px black;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+.back-link {
+    display: block;
+    margin-top: 15px;
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+} 
