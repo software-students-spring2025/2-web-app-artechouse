@@ -3,8 +3,9 @@
 
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="../static/header.css">
-    <link rel="stylesheet" href="../static/bookCard.css">
+    <link rel="stylesheet" href="../static/styles.css">
+    <!-- <link rel="stylesheet" href="../static/header.css">
+    <link rel="stylesheet" href="../static/bookCard.css"> -->
 </head>
 
 <body>
@@ -15,7 +16,8 @@
         </header>
 
         <header class="navbar">
-            <button class="profile-btn">Profile 👤</button>
+            <a href="{{ url_for('user_profile') }}"><button class="profile-btn">Profile 👤</button></a>
+            <a href="{{ url_for('logout') }}"><button class="logout-btn">Logout</button></a>
 
             <a href="{{ url_for('home') }}" class="home-btn">🏠</a>
             <form action="{{ url_for('search_books') }}" method="GET" class="search-form">
@@ -26,7 +28,6 @@
 
         <div class="filters">
             <a href="{{ url_for('filter_sort') }}"><button>Sort By/Filter</button></a>
-            <!-- <button id="filter">Filter</button> -->
         </div>
 
         <div id="book-list">

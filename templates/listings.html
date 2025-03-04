@@ -16,19 +16,13 @@
         <p><strong>Price:</strong> ${{ book.price }}</p>
         <p><strong>Format:</strong> {{ book.format }}</p>
 
-        {% if book.seller_id == current_user.id %}
-            <div class="actions">
-                <a href="{{ url_for('user_profile') }}" class="back-link">Back to Profile</a>
-                <a href="{{ url_for('edit_book', book_id=book._id) }}" class="btn">Edit</a>
-                <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this listing?')">Delete</a>
-                <a href="{{ url_for('mark_as_sold', book_id=book._id) }}" class="btn">Mark as Sold</a>
-            </div>
-        {% else %}
-            <a href="{{ url_for('seller_profile', seller_id=book.seller_id) }}">
-                <button class="profile-button">Seller’s Profile</button></a>
-        {% endif %}
-
         <a href="{{ url_for('home') }}" class="back-link">Back to Home</a>
+        <a href="{{ url_for('user_profile') }}" class="back-link">My Profile</a>
+
+        <div class="actions">
+            <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this listing?')">Delete</a>
+            <a href="{{ url_for('mark_as_sold', book_id=book._id) }}" class="btn">Mark as Sold</a>
+        </div>
     </div>
 </body>
 </html>

@@ -36,30 +36,35 @@
     </style>
 </head>
 <body>
-    <button class="top-left-button">⬅</button>
+    <a href="{{ url_for('home') }}"><button class="top-left-button">⬅</button></a>
     <div class="container">
-        <h2 id="profile-name">John</h2>
-        <p id="profile-username"><strong>jp1010</strong></p>
+        <h2 id="profile-name">{{ seller.username }}</h2>
+        <p id="profile-username"><strong>{{ seller.username }}</strong></p>
         
         <h3>Email</h3>
-        <p id="profile-email">cp3636@nyu.edu <button class="contact-button">Contact</button></p>
+        <p id="profile-email">{{ seller.email }} <button class="contact-button">Contact</button></p>
         
-        <h3>John’s books</h3>
+        <h3>{{ seller.username }}'s books</h3>
         
         <h4>Available</h4>
         <div id="available-books">
-            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
-            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
-            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
-            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
+            {% for book in available_books %}
+                <p class="book-card">
+                    <a href="{{ url_for('book_details', book_id=book._id) }}">
+                        <strong>{{ book.title }}</strong>
+                    </a>
+                    <br> {{ book.author }}
+                </p>
+            {% endfor %}
         </div>
         
         <h4>Sold</h4>
         <div id="sold-books">
-            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
-            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
-            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
-            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
+            {% for book in sold_books %}
+                <p class="book-card">
+                    <strong>{{ book.title }}</strong><br> {{ book.author }}
+                </p>
+            {% endfor %}
         </div>
     </div>
 </body>

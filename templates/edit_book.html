@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="edit-book-container">
+        <h2>Edit Book Listing</h2>
+        <form action="{{ url_for('edit_book', book_id=book._id) }}" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{ book.title }}" required>
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" value="{{ book.author }}" required>
+
+            <label for="edition">Edition:</label>
+            <input type="text" id="edition" name="edition" value="{{ book.edition }}">
+
+            <label for="year">Year:</label>
+            <input type="number" id="year" name="year" value="{{ book.year }}" required>
+
+            <label for="condition">Condition:</label>
+            <select id="condition" name="condition">
+                <option value="New" {% if book.condition == "New" %}selected{% endif %}>New</option>
+                <option value="Like New" {% if book.condition == "Like New" %}selected{% endif %}>Like New</option>
+                <option value="Used" {% if book.condition == "Used" %}selected{% endif %}>Used</option>
+            </select>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="1.00" value="{{ book.price }}" required>
+
+            <label for="format">Format:</label>
+            <select id="format" name="format">
+                <option value="Paperback" {% if book.format == "Paperback" %}selected{% endif %}>Paperback</option>
+                <option value="Hardcover" {% if book.format == "Hardcover" %}selected{% endif %}>Hardcover</option>
+            </select>
+
+            <button type="submit">Save Changes</button>
+        </form>
+
+        <a href="{{ url_for('book_details', book_id=book._id) }}" class="back-link">Back to Book Details</a>
+        <a href="{{ url_for('home') }}" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>
