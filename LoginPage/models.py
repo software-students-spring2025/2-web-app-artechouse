@@ -1,16 +1,15 @@
 from flask_login import UserMixin
 from app import mongo
 
-#class to set user information
 class User(UserMixin):
     def __init__(self, user_data):
-        self.id = str(user_data['_id'])  # MongoDB _id is an ObjectId, convert to string
-        self.username = user_data['username']
-        self.password = user_data['password']
+        self.id = str(user_data['_id'])  # Convert MongoDB ObjectId to string
+        self.email = user_data['email']  # Store email
+        self.username = user_data['username']  # Store extracted username
+        self.password = user_data['password']  # Store hashed password
 
-    #can only be called inside the class: gets user info 
     @staticmethod
-    def get_user(username):
-        """Fetch a user from MongoDB"""
-        user_data = mongo.db.users.find_one({"username": username})
+    def get_user(email):
+        """Fetch a user from MongoDB using email"""
+        user_data = mongo.db.users.find_one({"email": email})  
         return User(user_data) if user_data else None
