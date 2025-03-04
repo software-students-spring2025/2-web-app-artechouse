@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: auto;
+        }
+        .container {
+            padding: 20px;
+        }
+        .book-card {
+            margin: 5px 0;
+        }
+        .top-left-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #ccc;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-button {
+            background: black;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="top-left-button">⬅</button>
+    <div class="container">
+        <h2 id="profile-name">John</h2>
+        <p id="profile-username"><strong>jp1010</strong></p>
+        
+        <h3>Email</h3>
+        <p id="profile-email">cp3636@nyu.edu <button class="contact-button">Contact</button></p>
+        
+        <h3>John’s books</h3>
+        
+        <h4>Available</h4>
+        <div id="available-books">
+            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
+            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
+            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
+            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
+        </div>
+        
+        <h4>Sold</h4>
+        <div id="sold-books">
+            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
+            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
+            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
+            <p class="book-card"><strong>[Book Name]</strong><br>[Name of the Author]</p>
+        </div>
+    </div>
+</body>
+</html>
